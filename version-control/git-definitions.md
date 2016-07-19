@@ -9,5 +9,5 @@
 * What is a commit? What makes a good commit message?
     * A commit is when the current version of the project is saved.  A good commit message gives a specific and detailed explanation of the changes made.
 * What is a merge conflict?
-    * A merge confilct happens when two branches are unable to merge due to conflicting changes having been made--for exapmle, there may be a disagreement between changes made to the same line of code in each branch.
+    * A merge confilct happens when two branches are unable to merge due to conflicting changes having been made--for example, there may be a disagreement between changes made to the same line of code in each branch.
     
