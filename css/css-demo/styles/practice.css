@@ -1,0 +1,28 @@
+#contact-info {
+
+font-size: .8em;
+
+}
+
+.job {
+  background-color: #e9e5dc;
+  padding: 2px; 
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.nathan {
+font-size: .8em;
+
+}
+
+#contact-info:hover {
+
+  background: gold;
+}
+
+#work-experience section {
+
+background: gold;
+
+
+}
