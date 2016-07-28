@@ -1,0 +1,77 @@
+/* solution using absolute positioning only:
+#body {
+	position: absolute;
+	z-index: 1;
+	left: 300px;
+	top: 100px;
+}
+
+#hat {
+	position: absolute;
+	z-index: 2;
+	left:280px;
+	top:13px;
+}
+
+#glasses {
+	position: absolute;
+	z-index: 2;
+	left:342px;
+	top: 199px
+}
+*/
+/* alternate solution using relative and absolute positioning: 
+note that neither solution 1 or 2 scales with page size.  I like solution 
+one for its simplicity, but solution two works with position relationships, 
+which is more interesting to me. Use of em units is arbitrary; just playing.
+#body {
+	position: relative;
+	margin-left: 20em; 
+	margin-top: 5em;
+}
+
+#hat {
+	position: absolute;
+	z-index: 2;
+	left: 19em;
+}
+
+#glasses {
+	position: absolute;
+	z-index: 2;
+	left: 23.2em;
+	top:11.6em;
+}
+*/
+/* another solution (#3) using a parent element with relative positioning (as 
+in the example) to wrap the absolute-positioned images.*/
+.octowrapper {
+	position: relative;
+}
+
+#hat {
+	position: absolute;
+	z-index: 2;
+	top: 13px;
+	left: 290px;
+}
+
+#glasses {
+	position: absolute;
+	z-index: 2;
+	left: 350px;
+	top: 205px;
+}
+
+#body {
+	position: absolute;
+	z-index: 1;
+	margin-left: 300px;
+	margin-top: 100px;
+}
+
+
+
+
+
+
