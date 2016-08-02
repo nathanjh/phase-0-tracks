@@ -7,19 +7,19 @@ def error_check(input_check)
 end
 
 # Hamster Name
-puts "Does this hamster have a name? (y/n)"
-has_name = gets.chomp
-error_check(has_name)
+puts "Does this hamster have a name? (y/n)\n"
+name = gets.chomp
+error_check(name)
 
-if has_name == "y"
-	puts "What's this hamster's name?"
+if name == "y"
+	puts "What's this hamster's name?\n"
 	name = gets.chomp
-else has_name == "n"
+else
 	name = "Johnny"
 end
 
 # Hamster Loudness
-puts "Rate hamster's loudness: (1-10)"
+puts "Rate hamster's loudness: (1-10)\n"
 hamster_loudness = gets.chomp.to_i
 
 # Hamster Color
@@ -27,12 +27,18 @@ puts "Rate hamster's fur color:"
 hamster_color = gets.chomp
 
 # Hamster a good pet?
-puts "Would this hamster make a good pet? (y/n)"
+puts "Would this hamster make a good pet? (y/n)\n"
 good_pet = gets.chomp
 error_check(good_pet)
 
+if good_pet == "y"
+	good_pet = true
+else
+	good_pet = false
+end
+
 # Hamster Age
-puts "What do you reckon to be the age of this hamster (digit in years)? If not known, leave blank."
+puts "What do you reckon to be the age of this hamster (digit in years)? If not known, leave blank.\n"
 age = gets.chomp
 if age == ""
 	age = nil
