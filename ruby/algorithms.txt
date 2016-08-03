@@ -1,0 +1,100 @@
+Release 0: Equip Your New Robot
+Elevator instructions:
+(assumes robot can tell which floor it is on "current floor")
+
+-Approach elevator doors
+-Locate call buttons.
+    -Look to the right of the door
+        -If no buttons, look to the left of the door
+        -If no buttons, step away from the doorway (just in case), and wait at maximum 5 minutes.
+            -If nothing happens, is not an elevator.
+            -If doors open, go inside.
+-Access memory "desired floor"
+-If "current floor" is greater than "desired floor"
+    -Press down button.
+    -Else press up button.
+    -Else if Numbers of Buttons = 1, press button.
+-Wait at maximum 5 minutes for elevator doors to open.
+-Step inside.
+-If there's an attendant, speak "'desired floor', please".
+    -Otherwise:
+        -Locate control panel:
+            -Turn around 180 degrees and look to the right of the door
+                -If no control panel, look to the left of the door
+                -Test for voice activated control panel
+                    -Speak "'desired floor', please".
+                    -Wait 5 seconds
+                    -If no reply, no voice activated control panel.
+                -If no control panel, is not an elevator--get out!
+        -Check buttons
+            -Check control panel, and find button number equals "1"
+                -If button number equals "desired floor", press button
+                -Otherwise, set button number to "button number + 1" and repeat previous instruction
+-Locate floor display
+    -Look above door
+    -If no display, look at control panel
+    -If no display, visually search all surfaces starting directly in front, and rotating to the right 90 degrees
+    -If still no display after 3 rotations, 
+        -Look up
+        -If no display up, look down
+        -If still no display, wait for something to happen
+-When floor display number equals "desired floor"
+    -Wait for doors to open
+        -If doors do not open, engage plasma torch 
+            -Access memory "minimum dimensions for ingress"
+            -Activate torch, cut hole in door, size equals "minimum dimensions for ingress"
+            -proceed through door
+    -Step off elevator
+
+_______________________________________________________________________________
+Release 1: Prepare Drip-Style Coffee (pour-over method)
+Serves 1
+
+-Requirements:
+    -Obtain coffee (whole bean), dripper, filter (paper or cloth), grinder, digital scale, electric kettle/hot water dispenser (or similar with temperature control feature), mug (or similar drinking vessel), small bowl, filtered water
+
+-Choose "Desired amount brewed coffee", as long as it's less than or equal to maximum volume of mug
+-Measure water to be heated and fill kettle
+    -Repeat two times:
+        -Fill mug with filtered water
+        -Pour water from mug into electric kettle
+-"Desired water temperature" equals 201 degrees F
+-Heat water to "desired water temperature" by activating electric kettle
+    -Set temperature to 201 degrees F 
+    -While waiting for water to reach desired temperature, weigh coffee
+        -Place small bowl on scale
+        -Turn on scale 
+            -Check scale weight equals 0.0 grams
+                -If not, press 'tare' button to reset.
+            -Pour coffee beans into small bowl until weight equals "desired amount of brewed coffee (recall 1fl oz equals 29.57 grams)" divided by 17.42"
+            -Resulting scale reading equals "coffee weight"
+            -Turn off scale
+    -Check water temperature
+        -If water temperature is less than "desired water temperature", wait until water temperature equals "desired water temperature"
+-Place filter in dripper
+-Place dripper on mug
+-Rinse filter and preheat mug and dripper
+    -Pour heated water evenly over filter until completely saturated (visual check) and mug is half full of water
+    -While mug and dripper are warming up, grind coffee
+        -Set grinder to grind equals medium
+        -Place now-weighed coffee beans in grinder
+        -Process until all beans are ground
+        -Pour ground coffee into small bowl
+    -Remove dripper and dispose of water (or retain for another purpose if "drought conditions" equals true)
+-Replace dripper on mug, and place dripper plus mug on scale.
+    -Turn on scale
+        -Check scale weight equals 0.0 grams
+            -If not, press 'tare' button to reset.
+-Place ground coffee in now-rinsed filter
+-Pre-soak ground coffee
+    -Gently pour water over ground coffee until all grounds are saturated or weight equals "coffee weight" multiplied by two
+-Wait 30 seconds
+    -Recall a favorite tune from childhood, and whistle a few bars (if inspired)
+-After 30 seconds, slowly pour water over grounds 
+    -Start from the center and gradually pour in concentric, clockwise circles working out towards the edge (but stopping at least 1cm before reaching the edge) and back in towards the center
+    -Pour slowly, until total scale reads "desired amount of brewed coffee" plus "coffee weight" 
+-Remove dripper from mug
+    -Compost spent grounds (if applicable)
+-Enjoy
+
+
