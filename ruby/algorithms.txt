@@ -13,7 +13,7 @@ Elevator instructions:
 -If "current floor" is greater than "desired floor"
     -Press down button.
     -Else press up button.
-    -If Numbers of Buttons = 1, press button.
+    -Else if Numbers of Buttons = 1, press button.
 -Wait at maximum 5 minutes for elevator doors to open.
 -Step inside.
 -If there's an attendant, speak "'desired floor', please".
@@ -21,6 +21,10 @@ Elevator instructions:
         -Locate control panel:
             -Turn around 180 degrees and look to the right of the door
                 -If no control panel, look to the left of the door
+                -Test for voice activated control panel
+                    -Speak "'desired floor', please".
+                    -Wait 5 seconds
+                    -If no reply, no voice activated control panel.
                 -If no control panel, is not an elevator--get out!
         -Check buttons
             -Check control panel, and find button number equals "1"
@@ -42,6 +46,7 @@ Elevator instructions:
             -proceed through door
     -Step off elevator
 
+_______________________________________________________________________________
 Release 1: Prepare Drip-Style Coffee (pour-over method)
 Serves 1
 
@@ -62,6 +67,8 @@ Serves 1
             -Check scale weight equals 0.0 grams
                 -If not, press 'tare' button to reset.
             -Pour coffee beans into small bowl until weight equals "desired amount of brewed coffee (recall 1fl oz equals 29.57 grams)" divided by 17.42"
+            -Resulting scale reading equals "coffee weight"
+            -Turn off scale
     -Check water temperature
         -If water temperature is less than "desired water temperature", wait until water temperature equals "desired water temperature"
 -Place filter in dripper
@@ -74,8 +81,20 @@ Serves 1
         -Process until all beans are ground
         -Pour ground coffee into small bowl
     -Remove dripper and dispose of water (or retain for another purpose if "drought conditions" equals true)
--Place
-
-
+-Replace dripper on mug, and place dripper plus mug on scale.
+    -Turn on scale
+        -Check scale weight equals 0.0 grams
+            -If not, press 'tare' button to reset.
+-Place ground coffee in now-rinsed filter
+-Pre-soak ground coffee
+    -Gently pour water over ground coffee until all grounds are saturated or weight equals "coffee weight" multiplied by two
+-Wait 30 seconds
+    -Recall a favorite tune from childhood, and whistle a few bars (if inspired)
+-After 30 seconds, slowly pour water over grounds 
+    -Start from the center and gradually pour in concentric, clockwise circles working out towards the edge (but stopping at least 1cm before reaching the edge) and back in towards the center
+    -Pour slowly, until total scale reads "desired amount of brewed coffee" plus "coffee weight" 
+-Remove dripper from mug
+    -Compost spent grounds (if applicable)
+-Enjoy
 
 
