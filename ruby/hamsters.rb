@@ -23,7 +23,6 @@ else
 		ham_names.readlines
 	}
 	name = "Johnny".concat(johnnys.length.to_s)
-	puts name
 	File.open("johnnys.txt", "a") { |newname| newname.puts name + " acquired on: " +Time.now.strftime("%d/%m/%Y %H:%M")}
 end
 
