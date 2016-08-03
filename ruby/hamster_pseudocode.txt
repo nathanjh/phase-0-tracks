@@ -1,0 +1,31 @@
+- Ask for the hamster's name
+- If hamster doesn't have name:
+	- store a random name in variable
+- Else:
+	- store the name in variable
+
+- Ask for volume level
+- while the volume is not 1-10
+	- keep asking
+- else
+	- store volume level in variable
+
+- Ask for fur color
+- store fur color
+
+- Ask if hamster is a good candidate for adoption
+- until response is y or n
+	- keep asking
+
+- Ask for age
+- if response is blank
+	- store nil
+- else
+	- store the age
+	
+
+
+-extra stuff
+-create separate text file for all "johnnys" (one Johnny per line)
+	-when new johnny is named, give it the name, "Johnny"+ length of array parsed from txt file
+	-write new name to next line in text file, and set local variable "name" 
