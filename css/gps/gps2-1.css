@@ -1,0 +1,58 @@
+body {
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+
+.column-1{
+  background:hotpink;
+  float:left;
+  padding: 10px;
+  vertical-align: top;
+  width: 400px;
+  height: 450px;
+  margin: 10px;
+  border: 2px solid black;
+  overflow: scroll;
+
+}
+.column-2 {
+  background: blue;
+  float:left;
+  padding: 10px;
+  vertical-align: top;
+  width: 400px;
+  height: 450px;
+  margin: 10px;
+  border: 2px solid black;
+  overflow: scroll;
+
+}
+
+
+article {
+  border-radius: 10px;
+  border: 1px solid black;
+  padding: 5px;
+  margin:5px;
+}
+
+header {
+  background-color: gray;
+  width: 840px;
+  margin: 5px;
+  text-align: center;
+  padding:5px;
+  border: 2px solid black;
+
+}
+
+footer {
+    background:gray;
+  float:left;
+  padding: 10px;
+  vertical-align: top;
+  width: 840px;
+  margin: 10px;
+  clear: both;
+ border: 2px solid black;
+}
