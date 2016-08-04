@@ -1,4 +1,4 @@
-# Method for Error Checking
+# Helper method for error checking
 def error_check(input_check)
 	until input_check == "y" or input_check == "n" do 
 		puts "Error. Please enter y or n"
@@ -6,12 +6,12 @@ def error_check(input_check)
 	end
 end
 # Hamster Name
-puts "Does this hamster have a name? (y/n)\n"
+puts "Does this hamster have a name? (y/n)"
 name = gets.chomp
 error_check(name)
 
 if name == "y"
-	puts "What's this hamster's name?\n"
+	puts "What's this hamster's name?"
 	name = gets.chomp
 else
 	##Internal naming system based on number of un-named hamsters
@@ -27,15 +27,20 @@ else
 end
 
 # Hamster Loudness
-puts "Rate hamster's loudness: (1-10)\n"
+puts "Rate hamster's loudness: (1-10)"
 hamster_loudness = gets.chomp.to_i
+#test for valid response
+until (1..10).include?(hamster_loudness)
+	puts "Invalid loudness level\nPlease rate squeak volume on a scale from 1 to 10."
+	hamster_loudness = gets.chomp.to_i
+end
 
 # Hamster Color
 puts "Rate hamster's fur color:"
 hamster_color = gets.chomp
 
 # Hamster a good pet?
-puts "Would this hamster make a good pet? (y/n)\n"
+puts "Would this hamster make a good pet? (y/n)"
 good_pet = gets.chomp
 error_check(good_pet)
 
@@ -46,12 +51,23 @@ else
 end
 
 # Hamster Age
-puts "What do you reckon to be the age of this hamster (digit in years)? If not known, leave blank.\n"
+puts "What do you reckon to be the age of this hamster (digit in years)? If not known, leave blank."
 age = gets.chomp
 if age == ""
 	age = nil
 else
 	age = age.to_i
+	#test for valid response--takes advantage of zero return property of to_i method
+	while age <= 0 #who knows? someone might use a negative number...
+		puts "Please enter a valid age in years (eg. 1, 2, 3.75, etc.)."
+		age = gets.chomp
+		if age == ""
+			age = nil
+			break
+		else
+			age = age.to_i
+		end
+	end
 end
 
-puts "Name: #{name}\nLoudness: #{hamster_loudness}\nColor: #{hamster_color}\nGood Candidate: #{good_pet}\nAge: #{age}\n"
+puts "Name: #{name}\nLoudness: #{hamster_loudness}\nColor: #{hamster_color}\nGood Candidate: #{good_pet}\nAge: #{age == nil ? "age not known" : age} years old."
