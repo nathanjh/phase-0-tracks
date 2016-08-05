@@ -1,4 +1,8 @@
-##add functionality to create and write to a list of all interviewees!!!!
+#use questionaire to build up a hash to store answers, then apply a test method to determine vampire status.
+#this allows us to store interviewee profiles for future reference (we could write hashes to a new file, or perhaps
+#store them locally by pushing to an array or another hash)
+#-just for fun:
+candidates = Hash.new
 
 #age test helper method
 def age_test(age, birth_year)
@@ -11,9 +15,10 @@ def age_test(age, birth_year)
 	end
 end
 
-#list of known vampire aliases
+#list of known vampire aliases to test for
 $vamp_names = ["Drake Cula", "Tu Fang", "O R Lok", "Angel"]
-#vampire test helper method
+
+#vampire conditional logic test helper method
 def vamp_test(prof)
 	results = "Results inconclusive."
 	if $vamp_names.include?(prof[:name]) || prof[:allergies].include?("sunshine")
@@ -30,6 +35,7 @@ def vamp_test(prof)
 end			
 
 #determine number of candidates to process
+#note: user input could use error checking
 puts "Please input number of interviews to be processed."
 times = gets.chomp.to_i
 i = 0
@@ -58,20 +64,31 @@ while i < times
 
 	#allergy question
 	prof[:allergies] = Array.new
-	puts "Please list any known allergies.\nPlease type 'done' or leave blank when finished."
+	puts "Please list any known allergies.\nPlease type 'done' or leave blank (press enter) when finished."
 	allergy = gets.chomp
-	until allergy == "" || allergy == "done"
-		prof[:allergies] << allergy
+	until allergy == "" || allergy == "done" #adds input to allergies array, unless "" or "done" or "sunshine" are input
+		prof[:allergies] << allergy 
 		if allergy == "sunshine"
 			break
 		end
 		allergy = gets.chomp
 	end
-
-	puts prof 
+	#test answers
 	outcome = vamp_test(prof)
-	puts outcome
+	#store our test results 
+	prof[:test_results] = outcome
+	#update our candidate profiles hash to store data
+	candidates[prof[:name].to_sym] = prof
+	#print results for the user
+	puts "Test results for #{prof[:name]}:\n" + outcome
 	i += 1
 end
-p "Actually, never mind! What do these questions have to do with anything? Let's all be friends."
+#to test our hash storage method
+puts "________________\nSummary of today's interviews:"
+candidates.each do |k, v|
+	puts "\n#{k} test results: #{v[:test_results]}"
+end
+puts ".\n.\n.\n.\n.\n.\n.\n.\n.\n.\nActually, never mind! What do these questions have to do with anything? Let's all be friends."
+
+
 
