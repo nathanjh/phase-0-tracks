@@ -73,4 +73,5 @@ while i < times
 	puts outcome
 	i += 1
 end
+p "Actually, never mind! What do these questions have to do with anything? Let's all be friends."
 
