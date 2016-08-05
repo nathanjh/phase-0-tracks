@@ -22,7 +22,7 @@ def vamp_test(prof)
 		results = "Almost certainly a vampire."
 	elsif prof[:is_age] == false && (prof[:likes_garlic] == "n" || prof[:wants_insurance] == "n")
 		results = "Probably a vampire."	
-	elsif prof[:is_age] == true && (prof[:likes_garlic] == "y" || prof[:wants_insurance] == "y")
+	elsif prof[:is_age] != false && (prof[:likes_garlic] == "y" || prof[:wants_insurance] == "y")
 		results = "Probably not a vampire."
 	else
 		results
