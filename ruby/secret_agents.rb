@@ -34,7 +34,7 @@ end
 
 def decrypt_str(string)
 	decrypted_str = ""
-	aplha = "abcdefghijklmnopqrstuvwxyz"
+	alpha = "abcdefghijklmnopqrstuvwxyz"
 	i = 0
 	while i < string.length
 		if string[i] == " "
@@ -46,6 +46,29 @@ def decrypt_str(string)
 	end
 	decrypted_str
 end
+
+#this nested method call works because the encrypt method returns the string shifted 1 letter forward
+#the decrypt method takes the shifted string as its argument and returns a string shifted back 1 letter
+#p decrypt_str(encrypt_str("swordfish"))
+
+# Add an Interface 
+#-ask user decrypt or encrypt a password
+puts "Would you like to decrypt(d) or encrypt(e) password?"
+#-get user input 
+user_choice = gets.chomp
+#-ask user for password
+puts "What would you like your password to be?\nWords only, please."
+#-get user input and store as a variable
+user_password = gets.chomp
+#-either encrypt or decrypt based on previous choice and print results to the screen
+if user_choice == "d"
+	puts "Your decrypted password is:" + decrypt_str(user_password)
+else
+	puts "Your encrypted password is:" + encrypt_str(user_password)
+end
+#-exit program
+
+
 
 
 
