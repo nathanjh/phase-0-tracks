@@ -3,6 +3,7 @@
 #-takes a string as an argument
 #-define encrypted string variable as empty string
 #-if character is a letter, update new encypted string by advances by one forward in the alphabet
+#-if character is the letter 'z', update new encrypted string with 'a'
 #-if character is a space,  add a space to new encrypted string
 
 
@@ -13,6 +14,8 @@ def encrypt_str(string)
 	while i < string.length
 		if string[i] == " "
 			encrypted_str += " "
+		elsif string[i] == "z"
+			encrypted_str += "a"
 		else
 			encrypted_str += string[i].next
 		end
@@ -33,14 +36,24 @@ def decrypt_str(string)
 	decrypted_str = ""
 	aplha = "abcdefghijklmnopqrstuvwxyz"
 	i = 0
-	while 1 < string.length
+	while i < string.length
 		if string[i] == " "
 			decrypted_str += " "
 		else 
 			decrypted_str += alpha[alpha.index(string[i]) - 1]
 		end
+		i += 1
 	end
 	decrypted_str
 end
+
+
+
+
+
+
+
+
+
 
 
