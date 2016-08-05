@@ -5,6 +5,7 @@
 #-if character is a letter, update new encypted string by advances by one forward in the alphabet
 #-if character is the letter 'z', update new encrypted string with 'a'
 #-if character is a space,  add a space to new encrypted string
+#-return encrypted string
 
 
 
@@ -31,6 +32,7 @@ end
 #-define alpha variable as string containing the alphabet to get index numbers
 #-if character is a letter, finds the letter before the chosen letter, and update decrypted string variable
 #-if character is a space, add a space to decrypted string variable
+#-return decrypted string
 
 def decrypt_str(string)
 	decrypted_str = ""
@@ -67,7 +69,7 @@ else
 	puts "Your encrypted password is:" + encrypt_str(user_password)
 end
 #-exit program
-
+	
 
 
 
