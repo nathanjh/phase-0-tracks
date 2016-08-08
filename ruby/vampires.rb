@@ -142,7 +142,8 @@ puts ".\n.\n.\n.\n.\n.\n.\n.\n.\n.\nActually, never mind! What do these question
 #     #to short circut to a 'probably' even if a 'definitely' or 'almost certainly'
 #     #has already been determined based on previous answers.  It would make more sense
 #     #to only ask the allergy question if the result thus far evaluates to either 
-#     #'probably', 'probably not', or 'inconclusive' results.
+#     #'probably', 'probably not', or 'inconclusive' results.  This logic is reflected
+#     #in above solution.
 # 	puts "Please list any known allergies.\nPlease type 'done' or leave blank (press enter) when finished."
 # 	allergy = gets.chomp
 # 	until allergy == "" || allergy == "done" 
