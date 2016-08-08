@@ -19,10 +19,10 @@
 # => "STOP! YOU’RE UNDER ARREST!"
 
 "the usual".concat(" suspects")
-"suspects".prepend("the usual ").
+"suspects".prepend("the usual ")
 #=> "the usual suspects"
 
-" suspects".prepend("the usual")
+"suspects".prepend("the usual ")
 "the usual".concat(" suspects")
 # => "the usual suspects"
 
