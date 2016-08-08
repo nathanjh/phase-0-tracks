@@ -8,7 +8,7 @@
 # => “InVeStIgAtIoN”
 
 "zom".insert(1, "o")
-"zom".gsub("o", "oo")
+p "zom".gsub("o", "oo")
 "zom".sub("o", "oo")
 # => “zoom”
 
@@ -31,10 +31,10 @@
 # => "The case of the disappearing last lette"
 
 "The mystery of the missing first letter".slice(1..39)
-"The mystery of the missing first letter".sub("T", " ").lstrip
+p "The mystery of the missing first letter".sub("T", " ").lstrip
 # => "he mystery of the missing first letter"
 
-"Elementary,    my   dear        Watson!".squeeze(" ")
+p "Elementary,    my   dear        Watson!".squeeze(" ")
 # => "Elementary, my dear Watson!"
 
 "z".ord
