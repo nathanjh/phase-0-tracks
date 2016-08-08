@@ -159,36 +159,3 @@ puts ".\n.\n.\n.\n.\n.\n.\n.\n.\n.\nActually, never mind! What do these question
 # 	i += 1
 # end
 # puts ".\n.\n.\n.\n.\n.\n.\n.\n.\n.\nActually, never mind! What do these questions have to do with anything? Let's all be friends."
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
