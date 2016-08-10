@@ -102,6 +102,7 @@ else
 	puts "Please enter a new value for #{choice.to_s}"
 	#using helper methods, our program now knows what sort of data to store when given a valid key name!
 	client[choice] = convert_str_to(gets.chomp, data_type(choice, client))
+	puts "#{choice} is now #{client[choice]}."
 	#to test:
 	#puts "#{client[choice]} is an instance of #{client[choice].class}."
 	puts "Thanks for your interest! We'll be in touch shortly!"
