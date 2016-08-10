@@ -18,6 +18,16 @@
 #      conditionally convert data to matching type
 # -Print back revised hash keys/values 
 
+#helper method to convert to boolean values
+#   -takes a string
+#   -test for common bool-type inputs eg. 'y', 'true', 'N', etc.
+#   -conditionally converts and returns appropriate boolean value
+def to_bool(input)
+	case input
+	when true, "true", 1, "1", "t", "T", "y", "Y" then true
+	when false, "false", nil, "", 0, "0", "f", "F", "n", "N" then false
+	end
+end
 
 #helper method to test data type at key
 #   -takes an object and a hash
@@ -34,17 +44,34 @@ def data_type(key, hash)
 	end
 end
 
-h = {a: "stringy", b: 345, c: 1.5888, d: false}
-p data_type(:a, h)
-p data_type(:b, h)
-p data_type(:c, h)
-p data_type(:d, h)
-
-
-
-#helper method to convert input to given data type
-#   -takes a string, and a data type
+#helper method to convert input to given data type (represented by a string)
+#   -takes a string, and a data type (as a string)
 # 	-conditionally converts string to data type or returns string if data type == string
 #   -returns converted data
+def convert_str_to(input_str, data_type)
+	if data_type == "int"
+		input_str.to_i
+	elsif data_type == "float"
+		input_str.to_f
+	elsif data_type == "boolean"
+		to_bool(input_str)
+	else 
+		input_str
+	end
+end
+
 #helper method to format key printing
 #   -iterates over the hash, and prints a nicely formatted string listing keys, values.
+def print_profile(hash)
+	puts "Client profile\n_______________"
+	hash.each { |k, v| puts "#{k}: #{v}"}
+end
+
+
+
+
+
+
+
+
+
