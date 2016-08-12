@@ -1,6 +1,23 @@
 # Nested data structure consisting largely of hashes within hashes to represent
 #summer Olympics compteition results (selected).
 
+#helper function to convert time strings to seconds for comparison
+def to_sec(time) #needs to be a string "min:sec.hundreths of a sec"
+	time_ary = time.split(":").map { |num| num.to_f}#string to array of floats
+	time_ary[0] = time_ary[0] * 60.0#convert min to sec
+	time_in_sec = 0
+	time_ary.each { |num| time_in_sec += num }#sum total number of seconds
+	time_in_sec
+end
+
+#helper function to combine gymnastic scores for comparison
+def total_score(scores) #scores needs to be an array of floats
+	overall_score = 0
+	scores.each { |num| overall_score += num}
+	overall_score
+end
+
+
 summer_olympics = {
 	2012 => {
 		swimming: {
@@ -12,7 +29,8 @@ summer_olympics = {
 				"Chad le Clos" => "4:12.42",
 				"Yuya Horihata" => "4:13.49",
 				"Thomas Fraser-Holmes" => "4:13.49",
-				"Luca Marin" => "4:14.89"
+				"Luca Marin" => "4:14.89",
+				"World Record" => "4:03:84"
 			},
 			womens_400m_im: {
 				"Ye Shiwen" => "4:28.43",
@@ -22,7 +40,8 @@ summer_olympics = {
 				"Hannah Miley" => "4:34.17",
 				"Stephanie Rice" => "4:35.49",
 				"Caitlin Leverenz" => "4:35.49",
-				"Mereia Belmonte Garcia" => "4:35.62"
+				"Mereia Belmonte Garcia" => "4:35.62",
+				"World Record" => "4:26.43"
 			}
 		},
 		gymnastics: {
@@ -50,7 +69,7 @@ summer_olympics = {
 			}
 		}
 
-	}
+	},
 	2016 => {
 		swimming: {
 			mens_400m_im: {
@@ -61,7 +80,8 @@ summer_olympics = {
 				"Jay Litherland" => "4:11.68",
 				"Thomas Fraser-Holmes" => "4:11.90",
 				"Travis Mahoney" => "4:15.48",
-				"Joan Lluis Pons" => "4:16.58"
+				"Joan Lluis Pons" => "4:16.58",
+				"World Record" => ""
 			},
 			womens_400m_im: {
 				"Katinka Hosszu" => "4:26.36",
@@ -71,7 +91,8 @@ summer_olympics = {
 				"Emily Overhold" => "4:34.70",
 				"Elizabeth Beisel" => "4:34.98",
 				"Aimee Willmott" => "4:35.04",
-				"Sakiko Shimizu" => "4:38.06"
+				"Sakiko Shimizu" => "4:38.06",
+				"World Record" => ""
 			}
 		},
 		gymnastics: {
@@ -102,3 +123,13 @@ summer_olympics = {
 
 	}
 }
+
+#tests
+
+puts summer_olympics[2016][:gymnastics][:womens_all_around]["Simone Biles"]
+
+
+
+
+
+
