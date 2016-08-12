@@ -75,11 +75,11 @@ hash.select { |name, age| name.length > 5 }
 p hash
 
 # 4
-#array
+#array (array#drop_while returns new array)
 ary = [1, 34, 2, 6, 90, 134, 28, 33, 87]
 under_one_hundred = ary.drop_while { |num| num < 100 }
 p under_one_hundred
-#hash
+#hash (hash#reject! modifies hash in place)
 hash = {"nathan" => 35, "bradley" => 19, "anton" => 3, "bob" => 29, "jane" => 5}
 hash.reject! { |name, age| name.length > 5 }
 p hash
