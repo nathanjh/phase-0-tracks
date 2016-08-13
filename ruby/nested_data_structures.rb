@@ -10,6 +10,31 @@ def to_sec(time) #needs to be a string "min:sec.hundreths of a sec"
 	time_in_sec
 end
 
+#helper function to sort times--returns a sorted array of times in sec, fastest to slowest
+def sort_times(times) #takes an array of times as strings in the format "min:sec.hundreths of a sec"
+	times_in_sec = times.map { |time| to_sec(time) }.sort { |x,y| y <=> x }
+end
+
+#helper function to gather times into an array of strings--returns array of time-strings
+def get_times(hash)
+	times = hash.map { |name, time| time }
+end
+
+#helper function to convert hash times to seconds for comparison, returns new hash
+def hash_in_sec(hash)
+	hash_in_sec = hash
+	hash_in_sec.each { |name, time| hash_in_sec[name] = to_sec(time) }
+	hash_in_sec
+end
+#display method to compare sorted times array to a hash--takes hash (in seconds) and sorted array
+#prints resutls and indicates medals won and world record status
+def display_results(hash, array)
+	#search through hash and find matching times with array
+	#use array indices to determine results, eg. 0 is gold, etc.
+	#check world record status
+end
+
+
 #helper function to combine gymnastic scores for comparison
 def total_score(scores) #scores needs to be an array of floats
 	overall_score = 0
@@ -127,6 +152,21 @@ summer_olympics = {
 #tests
 
 puts summer_olympics[2016][:gymnastics][:womens_all_around]["Simone Biles"]
+
+puts total_score(summer_olympics[2016][:gymnastics][:womens_all_around]["Simone Biles"])
+
+puts "In #{summer_olympics.keys[0]} summer Olympics, the results for the #{summer_olympics[2012][:swimming].keys[0]} are as follows:"
+swim_times = [] # to collect and compare times against WR
+summer_olympics[2012][:swimming][:mens_400m_im].each do |name, time|
+	if name == "World Record"
+		puts "The word record was #{time}."
+	else 
+		puts "#{name} had a time of #{time}."
+	end
+end
+
+
+
 
 
 
