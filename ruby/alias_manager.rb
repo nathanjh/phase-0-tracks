@@ -82,7 +82,7 @@ until ans == "" || ans == "quit"
 	ans = gets.chomp
 end
 #to test hash storage of names/codenames
-code_names.each { |name, code_name| puts "#{name} is acutally '#{code_name}'." }
+code_names.each { |name, code_name| puts "#{name} is actually '#{code_name}'." }
 
 
 
