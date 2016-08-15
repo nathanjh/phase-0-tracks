@@ -51,7 +51,7 @@ def total_score(scores) #scores needs to be an array of floats
 	overall_score
 end
 
-
+# nested data structure:
 summer_olympics = {
 	2012 => {
 		swimming: {
