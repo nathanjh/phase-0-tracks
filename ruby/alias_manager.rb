@@ -67,3 +67,25 @@ end
 def encode(name)
 	code_name = last_first(letter_shifter(name))
 end
+
+
+#to store aliases (keys are actual names as strings, values are aliases as strings)
+code_names = {}
+
+#UI
+puts "Please enter a name to encode:"
+ans = gets.chomp
+until ans == "" || ans == "quit"
+	code_names[ans] = encode(ans) # to store k,v pair
+	puts "Your new alias...\n#{encode(ans)}."
+	puts "------------------\nTry again? (return key or 'quit' to exit)"
+	ans = gets.chomp
+end
+#to test hash storage of names/codenames
+code_names.each { |name, code_name| puts "#{name} is acutally '#{code_name}'." }
+
+
+
+
+
+
