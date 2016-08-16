@@ -19,3 +19,6 @@
 #   -wag tail
 #   -growl
 #   -fetch
+#   -shake
+#   -play dead
+#   -roll over
