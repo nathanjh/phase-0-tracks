@@ -24,9 +24,9 @@
 #   -test for common bool-type inputs eg. 'y', 'true', 'N', etc.
 #   -conditionally converts and returns appropriate boolean value
 def to_bool(input)
-	case input
-	when true, "true", 1, "1", "t", "T", "y", "Y" then true
-	when false, "false", nil, "", 0, "0", "f", "F", "n", "N" then false
+	case input.downcase
+	when true, "true", 1, "1", "t", "y" then true
+	when false, "false", nil, "", 0, "0", "f", "n" then false
 	end
 end
 
@@ -72,27 +72,38 @@ end
 
 client = {}
 # UI
+
 puts "Hooray, a new client!"
+
 #name
 puts "Please enter your name:"
 client[:name] = gets.chomp
+
 #age
 puts "Please enter your age:"
 client[:age] = gets.chomp.to_i
+
 #number of kids
 puts "Please enter number of children currently living in space to be remodeled:\n(please enter 0 if none)"
 client[:num_kids] = gets.chomp.to_i
+
 #decor style
 puts "Please give us a sense of your desired style of decor in one or two words:"
 client[:style] = gets.chomp
+
 #glass block lover?
 puts "How would you like a stunning new wall of glass blocks? (y/n)"
 client[:glass_blocks] = to_bool(gets.chomp)
+
 #home security question
 puts "Do you expect to require any trap doors or fake-bookcase-hidden-rooms? (y/n)"
 client[:trap_doors] = to_bool(gets.chomp)
+
+#thank client for filling out form, and print results
 puts ".\n.\n.\n.\n.\n.\n.\n.\n.\nThanks for your input!!!\nPlease take a moment to review your answers..."
 print_profile(client)
+
+#provide an opportunity to update an answer
 puts "Is there anything you'd like to change?\nIf so, please specify, otherwise leave blank or type 'none'."
 choice = gets.chomp.to_sym
 if choice == :none || choice == :""
