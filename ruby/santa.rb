@@ -15,7 +15,12 @@ class Santa
 		p "That was a good #{cookie}!"
 	end
 
-	
+	def celibrate_birthday
+		@age += 1
+	end
+
+	def get_mad_at(reindeer_name)
+		#finish this!
 	
 end
 
