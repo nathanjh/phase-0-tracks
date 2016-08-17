@@ -1,7 +1,7 @@
 #define Santa class
 class Santa 
-	attr_reader :reindeer_ranking, :age, :ethnicity
-	attr_accessor :gender
+	attr_reader :reindeer_ranking, :ethnicity
+	attr_accessor :gender, :age
 
 	def initialize(gender, ethnicity)
 		@gender = gender
@@ -29,11 +29,13 @@ class Santa
 end
 
 
+#driver code for release 0
 
 # multiple_santa = Santa.new
 # multiple_santa.speak
 # multiple_santa.eat_milk_and_cookies("lusikkaleivat")
 
+#driver code for release 1
 
 #array to store santa objects
 santas = []
@@ -49,7 +51,9 @@ ethnicity_options.length.times do |x| #outer loop for each possible ethnicity
 	end
 end
 
-ethan = santas[45] #arbitrary santa from santas array!
+#driver code for release 2
+
+ethan = santas[45] #arbitrary santa from santas array! 
 p ethan.reindeer_ranking
 #=> ["Rudolph", "Dasher", "Dancer", "Prancer", "Vixen", "Comet", "Cupid", "Donner", "Blitzen"]
 ethan.get_mad_at("Prancer")
@@ -63,6 +67,23 @@ p ethan.gender
 #=> "gender fluid"
 p ethan.ethnicity
 #=> "A. Indian/ Alaska nat."
+
+# random santa generator
+
+#attribute printer helper method 
+def attr_printer(santa) 
+	puts "HO HO HO! Here comes a(n) #{santa.ethnicity} santa who identifies as #{santa.gender}.\nThis santa is #{santa.age} years young!"
+end
+
+#here comes a ton of random santas!
+2000.times do |santa|
+	# -initialize a new santa with randomized gender and ethnicity
+	santa = Santa.new(gender_options.sample, ethnicity_options.sample)
+	# -set age to a random number between 0 and 140
+	santa.age = rand(140)
+	# -print message displaying gender, ethnicity, and age using attr_accessor methods
+	attr_printer(santa)
+end
 
 
 
