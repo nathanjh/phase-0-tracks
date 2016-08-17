@@ -1,32 +1,13 @@
 #define Santa class
 class Santa 
+	attr_reader :reindeer_ranking, :age, :ethnicity
+	attr_accessor :gender
+
 	def initialize(gender, ethnicity)
 		@gender = gender
 		@ethnicity = ethnicity
 		@reindeer_ranking = ["Rudolph", "Dasher", "Dancer", "Prancer", "Vixen", "Comet", "Cupid", "Donner", "Blitzen"]
 		@age = 0
-	end
-
-	#getter methods for attributes
-	def reindeer_ranking
-		@reindeer_ranking
-	end
-
-	def age
-		@age
-	end
-
-	def ethnicity 
-		@ethnicity
-	end
-
-	def gender
-		@gender
-	end
-
-	#setter methods
-	def gender=(new_gender)
-		@gender = new_gender
 	end
 
 	#other instance methods
