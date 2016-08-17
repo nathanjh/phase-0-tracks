@@ -18,8 +18,12 @@ class Puppy
 		puts "*rolls over*"
 	end
 
-	def dog_years(years)
-		dog_years = years * 7
+	def dog_years(years) 
+		if years <= 2
+			dog_years = years * 10.5
+		else
+			dog_years = 21 + (years - 2) * 4
+		end
 	end
 
 	def shake
@@ -56,10 +60,10 @@ end
 
 
 
-# fido = Puppy.new
-# fido.fetch("frisbee")
-# fido.speak(4)
-# fido.roll_over
-# p fido.dog_years(7)
-# fido.shake
+fido = Puppy.new
+fido.fetch("frisbee")
+fido.speak(4)
+fido.roll_over
+p fido.dog_years(7)
+fido.shake
 
