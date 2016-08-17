@@ -84,6 +84,3 @@ end
 	# -print message displaying gender, ethnicity, and age using attr_accessor methods
 	attr_printer(santa)
 end
-
-
-
