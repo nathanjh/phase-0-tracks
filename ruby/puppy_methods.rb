@@ -29,24 +29,28 @@ class Puppy
 end
 
 
-class Dragons
+class Dragon
 
 	def initialize
 		puts "Here comes a dragon..."
 	end
 
 	def breathes_fire
-		puts "Breathes fire.  A lot."
+		"*breathes fire...a lot*"
 	end
 
 	def fly
-		puts "Takes to the sky!"
+		"Takes to the sky!"
 	end
 end
 
+fifty_dragons = []
+50.times { fifty_dragons << Dragon.new }
+puts fifty_dragons
 
-
-
+fifty_dragons.each do |dragon|
+	puts "This dragon #{dragon.fly.downcase}\n#{dragon.breathes_fire}"
+end
 
 
 
