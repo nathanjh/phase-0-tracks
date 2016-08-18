@@ -67,9 +67,52 @@ end
 #test code
 list = create_list("carrots apples cereal pizza")
 p list.class
-add_to_list(list, "avocado", 5)
+add_or_update_item(list, "avocado", 5)
 print_list(list)
-add_to_list(list, "broccoli")
+add_or_update_item(list, "broccoli")
 print_list(list)
 remove_item(list, "apples")
-update_qty(list, "avocado", 3)
+add_or_update_item(list, "avocado", 3)
+
+#release 5
+# # - Going into this challenge, I was feeling a little bit shaky about my pseudocoding--I actually
+# #opted to drive first in order to get more practice with this.  Having had the opportunity to 
+# #work wtih my pair and guide on this, I feel a bit more confident with pseudocode.  When used 
+# #as an organizing principle, good clear pseudocode makes actual coding much easier and really
+# #helps to keep the digressions to a minimum.
+
+# # - Using arrays to store the type of list data required in this challenge would have 
+# #been somewhat more cumbersome, and would have described the concept (of a list of items and 
+# #corresponding quantities) in a more roundabout fashion.  I would assume that a two dimensional
+# #array would be used to store two element arrays representing items and corresponding qtys.  This 
+# #would neccessitate another level of translation, something like:
+# def create_ary_list(string_of_items)
+# 	new_list = []
+# 	items_array = string_of_items.split(" ").each { |item| new_list << [item, 1]}#one is default qty
+# 	new_list
+# end
+# #to test
+# array_list = create_ary_list("carrots apples cereal pizza")
+# p array_list
+# #to access an item
+# pizza = array_list[3][0]
+# #new qty for apples
+# array_list[1][1] = 50
+# p array_list
+# # In order to access any given item you'd need another level of translation, and would need 
+# #to search the array to check values for any parameter input into a method...totally doable,
+# #but why?  Perhaps you needed an ordered list, and wanted to easily manipulate the ordering?  I'd 
+# #imagine that would be pretty tricky to do with a hash.  With the hash, you give up the ordering, 
+# #but gain a much simpler and more direct structure with which to work.
+
+# # - A method (in Ruby) returns the last line of code executed, or an explict return statement.
+
+# # - Methods can take all sorts of things as arguments--simple objects like strings, numbers, etc. as 
+# #well as data structures like arrays and hashes, other methods (when the return value type is expected by
+# #the method), and also blocks (I'm sure there's more).
+
+# # - Information can be passed between methods by using method return values as arguments.
+
+# # - I appreaciated the extra practice in critically approaching a problem with multiple solutions.
+# #It was a great excercise to force myself to tackle a problem in a way that might not be 
+# #my first choice solution, and then to have to see it to the end.  
