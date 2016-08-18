@@ -61,6 +61,11 @@ def remove_item(list_hash, item)
 	list_hash
 end
 
+def update_qty(list_hash, item, qty)
+	list_hash[item] = qty
+	print_list(list_hash)
+	list_hash
+end
 
 
 list = create_list("carrots apples cereal pizza")
@@ -70,7 +75,7 @@ print_list(list)
 add_to_list(list, "broccoli")
 print_list(list)
 remove_item(list, "apples")
-
+update_qty(list, "avocado", 3)
 
 
 
