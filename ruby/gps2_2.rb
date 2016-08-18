@@ -27,3 +27,44 @@
 # input: list hash
 # steps: print key value pairs with nice formatting
 # output: hash as is, with strings printed to console
+
+#release 2
+
+#list print method
+def print_list(list_hash)
+	list_hash.each do |item, qty|
+		puts "#{item}: #{qty}"
+	end
+end
+
+#create a list method
+def create_list(string_of_items) #needs to be separated by single spaces
+	new_list = {}
+	items_array = string_of_items.split(" ")
+	items_array.each { |item| new_list[item] = 1 }
+	print_list(new_list)
+	new_list
+end
+
+def add_to_list(list_hash, item, qty=1)
+	list_hash[item] = qty
+	list_hash
+	#call list print method to confirm changes
+end
+
+
+list = create_list("carrots apples cereal pizza")
+p list.class
+
+
+
+
+
+
+
+
+
+
+
+
+
