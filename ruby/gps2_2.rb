@@ -1,3 +1,5 @@
+#release 1
+
 # Method to create a list
 # input: string of items separated by spaces (example: "carrots apples cereal pizza")
 # steps: 
@@ -48,26 +50,21 @@ def create_list(string_of_items) #needs to be separated by single spaces
 	new_list
 end
 
-#
-def add_to_list(list_hash, item, qty=1)
+#add item and optional quantity or update qty if pre-existing item
+def add_or_update_item(list_hash, item, qty=1)
 	list_hash[item] = qty
 	print_list(list_hash)
 	list_hash
 end
 
+#removes an item from list
 def remove_item(list_hash, item)
 	list_hash.delete(item)
 	print_list(list_hash)
 	list_hash
 end
 
-def update_qty(list_hash, item, qty)
-	list_hash[item] = qty
-	print_list(list_hash)
-	list_hash
-end
-
-
+#test code
 list = create_list("carrots apples cereal pizza")
 p list.class
 add_to_list(list, "avocado", 5)
@@ -76,13 +73,3 @@ add_to_list(list, "broccoli")
 print_list(list)
 remove_item(list, "apples")
 update_qty(list, "avocado", 3)
-
-
-
-
-
-
-
-
-
-
