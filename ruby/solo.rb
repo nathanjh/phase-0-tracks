@@ -160,7 +160,7 @@ until ans == "n" || ans == ""
 	puts "Here's your rhythm:"
 	patterns.last.print_pattern
 	puts "You're welcome to change the instrument or sounds used to play your pattern...\nplease select i (for instrument) or s (for sounds) or leave blank to skip!"
-	choice = gets.chomp.downcase
+	choice = gets.chomp.downcase 
 	if choice == "i"
 		puts "Please enter a new instrument to play your pattern...anything you'd like!"
 		patterns.last.instrument = gets.chomp
@@ -211,7 +211,7 @@ patterns.each { |pattern| pattern.print_pattern }
 
 
 
-
+#test code for release 1
 
 # three_plus_two = RhythmicPattern.new([1, 0, 0, 2, 0])
 # three_plus_two.print_pattern
