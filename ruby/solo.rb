@@ -33,11 +33,29 @@ class Rhythmic_Pattern
 		@accent_sounds = ["High Pitch", "Low Pitch"]
 		@instrument = 'woodblocks'
 	end
-
+	
+	def play(times=1) #to "play" rhytmic pattern in the console
+ 		puts "Playing on #{@instrument}..."
+		while times > 0
+			beat_counter = 1
+			@accents_array.each do |beat|
+				if beat == 0
+					puts beat_counter
+				elsif beat == 1
+					puts @accent_sounds[0]
+				elsif beat == 2
+					puts @accent_sounds[1]
+				end
+				beat_counter += 1
+				sleep 1
+			end
+			times -= 1
+		end
+	end
 
 
 
 end
 
 
-four = Rhythmic_Pattern.new([0,1,0,1])
+#four = Rhythmic_Pattern.new([0,1,0,1])
