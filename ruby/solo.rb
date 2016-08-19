@@ -21,3 +21,23 @@
 # 	that swaps accent types 1 for 2 whenever they occur.
 #  ** note that the retrograde and inversion methods can be chained to create a 'mirror image' 
 # - a print method that prints to the console and returns a string representing the rhythmic pattern
+
+#Release 1
+
+class Rhythmic_Pattern
+
+
+	def initialize(accents_array)
+		@beats_per_cycle = accents_array.length
+		@accents_array = accents_array #how to fix this to make it a more logical interface??
+		@accent_sounds = ["High Pitch", "Low Pitch"]
+		@instrument = 'woodblocks'
+	end
+
+
+
+
+end
+
+
+four = Rhythmic_Pattern.new([0,1,0,1])
