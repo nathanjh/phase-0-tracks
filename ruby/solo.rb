@@ -101,14 +101,6 @@ def to_accents(string_of_nums) #takes a string of user input numbers
 	accents = string_of_nums.split(" ").map { |num| num.to_i }
 end
 
-#user input accent-beat-choice validity checker method
-def beat_is_ok(num_beats, beat) #takes beat number as int and checks it against a given number of beats
-	if beat <= num_beats
-		true
-	else
-		false
-	end
-end
 #helper method to add user input array of numbers to accent pattern array
 # 	-takes an array of user input beat numbers and uses them to modify accents array by updating
 # 	accents array at user input index to equal val (an int) 
