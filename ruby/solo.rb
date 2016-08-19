@@ -25,11 +25,13 @@
 #Release 1
 
 class RhythmicPattern
+	attr_reader :beats_per_cycle, :accents_array
+	attr_accessor :accent_sounds, :instrument #possible to edit sounds and instrument
 
 
 	def initialize(accents_array)
 		@beats_per_cycle = accents_array.length
-		@accents_array = accents_array #how to fix this to make it a more logical interface??
+		@accents_array = accents_array #would like to make this a more logical interface...feels clunky
 		@accent_sounds = ["High Pitch", "Low Pitch"]
 		@instrument = 'woodblocks'
 	end
@@ -53,7 +55,7 @@ class RhythmicPattern
 		end
 	end
 
-	def retrograde
+	def retrograde 
 		retro_rhythm = @accents_array.reverse 
 		retrograde = RhythmicPattern.new(retro_rhythm)
 	end
@@ -70,12 +72,35 @@ class RhythmicPattern
 		end
 		inversion = RhythmicPattern.new(invers_rhythm)
 	end
+	
+	def print_pattern
+		printed_pattern = "Rhythmic cycle of #{@beats_per_cycle} beats:\n-----------------------------\n"
+		beat_counter = 1
+		@accents_array.each do |beat|
+			if beat == 0
+				printed_pattern += "/#{beat_counter}"
+			elsif beat == 1
+				printed_pattern += "/#{@accent_sounds[0]}"
+			elsif beat == 2
+				printed_pattern += "/#{@accent_sounds[1]}"
+			end
+			beat_counter += 1
+		end
+		puts printed_pattern += "/\n-----------------------------\n(played on #{@instrument})"
+		printed_pattern
+	end
 
 end
 
 
-three_plus_two = RhythmicPattern.new([1, 0, 0, 2, 0])
-three_plus_two.play(2)
-three_plus_two.retrograde.play(2)
-three_plus_two.inversion.play(2)
-three_plus_two.retrograde.inversion.play(2)
+# three_plus_two = RhythmicPattern.new([1, 0, 0, 2, 0])
+# three_plus_two.print_pattern
+# p three_plus_two.instrument
+# p three_plus_two.beats_per_cycle
+# three_plus_two.accent_sounds = ["Chick", "Chhhh"]
+# three_plus_two.instrument = "Hi-Hats"
+# three_plus_two.print_pattern
+# three_plus_two.play(2)
+# three_plus_two.retrograde.play(2)
+# three_plus_two.inversion.play(2)
+# three_plus_two.retrograde.inversion.play(2)
