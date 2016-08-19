@@ -24,7 +24,7 @@
 
 #Release 1
 
-class Rhythmic_Pattern
+class RhythmicPattern
 
 
 	def initialize(accents_array)
@@ -53,9 +53,29 @@ class Rhythmic_Pattern
 		end
 	end
 
+	def retrograde
+		retro_rhythm = @accents_array.reverse 
+		retrograde = RhythmicPattern.new(retro_rhythm)
+	end
 
+	def inversion
+		invers_rhythm = @accents_array.map do |event|
+			if event == 0
+				event
+			elsif event == 1
+				2
+			elsif event == 2
+				1
+			end
+		end
+		inversion = RhythmicPattern.new(invers_rhythm)
+	end
 
 end
 
 
-#four = Rhythmic_Pattern.new([0,1,0,1])
+three_plus_two = RhythmicPattern.new([1, 0, 0, 2, 0])
+three_plus_two.play(2)
+three_plus_two.retrograde.play(2)
+three_plus_two.inversion.play(2)
+three_plus_two.retrograde.inversion.play(2)
