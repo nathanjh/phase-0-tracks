@@ -11,11 +11,24 @@
 //	-Output reversed string variable
 
 function revString(string) {
-	revStr = "";
-	for (i = string.length - 1; i >= 0; i--) {
+	var revStr = "";
+	for (var i = string.length - 1; i >= 0; i--) {
 		revStr += string[i];
 	}
 	return revStr;
 }
 
-console.log(revString("reverse me"))
+var myName = "Nathan Herrera";
+var myNameBackwards = revString("Nathan Herrera");
+if (myName != myNameBackwards) {
+	console.log(myNameBackwards);
+}
+// the revString function gives us a goofy palindrome test!
+function printNotPalindrome(string) { //need to call toLowerCase string method to compare strings
+	if (string.toLowerCase() != revString(string).toLowerCase()) {
+		console.log(string);
+	} else { console.log("I can't print a palindrome!"); }
+}
+
+printNotPalindrome("Lon Nol")
+
