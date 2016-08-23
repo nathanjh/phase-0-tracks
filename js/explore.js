@@ -10,3 +10,12 @@
 //		-Decrement counter by one while counter is greater than or equal to zero.
 //	-Output reversed string variable
 
+function revString(string) {
+	revStr = "";
+	for (i = string.length - 1; i >= 0; i--) {
+		revStr += string[i];
+	}
+	return revStr;
+}
+
+console.log(revString("reverse me"))
