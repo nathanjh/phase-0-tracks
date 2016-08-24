@@ -55,34 +55,92 @@ function pairCheck(obj1, obj2) {
 	return isEqual;
 }
 
-//driver code (Release 1)
-var dog = {
-	name: "Teddy",
-	age: 10,
-	color: "golden"
-};
-var cat = {
-	name: "Fearless",
-	color: "grey and brown",
-	age: 10
-};
-hasMatch = pairCheck(cat, dog);
-console.log(hasMatch);
-//=> true (objects share age key and value)
-var otherCat = {
-	color: "white and grey",
-	name: "Oliver",
-	age: 5
-};
-hasMatch = pairCheck(cat, otherCat);
-console.log(hasMatch);
-//=> false (objects share all keys but no values)
-var chair = {
-	material: "wood",
-	legs: 4
-};
-hasMatch = pairCheck(dog, chair);
-console.log(hasMatch);
+// //driver code (Release 1)
+// var dog = {
+// 	name: "Teddy",
+// 	age: 10,
+// 	color: "golden"
+// };
+// var cat = {
+// 	name: "Fearless",
+// 	color: "grey and brown",
+// 	age: 10
+// };
+// hasMatch = pairCheck(cat, dog);
+// console.log(hasMatch);
+// //=> true (objects share age key and value)
+// var otherCat = {
+// 	color: "white and grey",
+// 	name: "Oliver",
+// 	age: 5
+// };
+// hasMatch = pairCheck(cat, otherCat);
+// console.log(hasMatch);
+// //=> false (objects share all keys but no values)
+// var chair = {
+// 	material: "wood",
+// 	legs: 4
+// };
+// hasMatch = pairCheck(dog, chair);
+// console.log(hasMatch);
+// //=> false (no shared keys or values)
+
+//Release 2:
+//pseudocode for random words array function:
+//	-Input is an integer to indicate output array length (i.e. number of words)
+//	-Create a local array variable to store random words
+//	-Input-integer number of times:
+//		-Add a random word to local array variable
+//		-Random Words function:
+//			-Input is an integer to indicate length of nonsensical word-string.
+//			-Create a local empty string variable to store our word as it is built.
+//			-Input-integer number of times:
+//				-Select a random letter (using random letter function, defined below)
+//				-Add letter to word string variable 
+//			-Output random word 
+//	-Return array 
+
+//random letter helper function
+function randomLetter() {
+	var alpha = "abcdefghijklmnopqrstuvwxyz";
+	return alpha[Math.floor(Math.random() * 26) ];
+}
+//random vowel helper function--to make our words more aesthetically interesting
+function randomVowel() {
+	var vowels = "aeiou";
+	return vowels[Math.floor(Math.random() * 5) ];
+}
+//vowel check helper function--to help our random word function know when to select a vowel
+function isVowel(char) {
+	var vowels = "aeiou"; 
+	if (vowels.includes(char)) {
+		return true;
+	}
+}
+//random word helper function 
+//(added some conditional letter selection to try and make slightly more interesting words)
+function randomWord(strLength) {
+	var word = ""
+	word += randomLetter() //to base subsequent letter selection off of random first letter
+	for (var i = 0; i < strLength - 1; i++) {
+		if (isVowel(word[i])) { 
+			if (Math.random() < 0.1) { //approximate a 1 in 10 chance?
+				word += randomVowel();
+			} else word += randomLetter();
+		} else {
+			word += randomVowel();
+		}
+	}
+	return word;
+}
+//random words array function
+function randomWordsArray(aryLength) {
+	var ary = [];
+	for (var i = 0; i < aryLength; i++) {
+		ary.push(randomWord(Math.floor((Math.random() * 10) + 1)));//makes words between 1 and 10 letters long
+	}
+	return ary; 
+}
 
 
 
