@@ -142,5 +142,12 @@ function randomWordsArray(aryLength) {
 	return ary; 
 }
 
+//to test (as per Release 2):
+for (var i = 0; i < 10; i++) {
+	var array = randomWordsArray(Math.floor((Math.random() * 10) + 1));
+	console.log(array);
+	var word = longestString(array);
+	console.log(word);
+}
 
 
