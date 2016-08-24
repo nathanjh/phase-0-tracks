@@ -34,7 +34,7 @@ function longestString(array) {
 //pseudocode for key-value match function:
 //	-Input is two js objects (object1 and object2)
 //	-Declare a variable to hold boolean return value to prevent function 
-//	short-circuting with an early return statement.
+//	short-circuting with an early return statement, and set it to equal false.
 //	-For each key in object1
 //		-IF object2 has the key
 //			-Compare the values at object1 key and object2 key
@@ -42,3 +42,47 @@ function longestString(array) {
 //				-Set boolean variable equal to true
 //		-ELSE set boolean variable equal to false
 //	-Return boolean variable
+
+function pairCheck(obj1, obj2) {
+	var isEqual = false;
+	for (var key in obj1) {
+		if (key in obj2) {
+			if (obj1[key] == obj2[key]) {
+				isEqual = true; //will return true if at least one k,v pair is shared
+			}
+		}
+	}
+	return isEqual;
+}
+
+//driver code (Release 1)
+var dog = {
+	name: "Teddy",
+	age: 10,
+	color: "golden"
+};
+var cat = {
+	name: "Fearless",
+	color: "grey and brown",
+	age: 10
+};
+hasMatch = pairCheck(cat, dog);
+console.log(hasMatch);
+//=> true (objects share age key and value)
+var otherCat = {
+	color: "white and grey",
+	name: "Oliver",
+	age: 5
+};
+hasMatch = pairCheck(cat, otherCat);
+console.log(hasMatch);
+//=> false (objects share all keys but no values)
+var chair = {
+	material: "wood",
+	legs: 4
+};
+hasMatch = pairCheck(dog, chair);
+console.log(hasMatch);
+
+
+
