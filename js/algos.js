@@ -20,12 +20,25 @@ function longestString(array) {
 	return word;
 }
 
-//driver code
-var phrases = ["long phrase","longest phrase","longer phrase"];
-var longestPhrase = longestString(phrases);
-console.log(longestPhrase);
-//=> "longest phrase"
-var words = ["and", "or", "the", "kettle", "coffee"];
-var longestWord = longestString(words);
-console.log(longestWord);
-//=> "kettle" (first encountered longest word)
+// //driver code (Release 0)
+// var phrases = ["long phrase","longest phrase","longer phrase"];
+// var longestPhrase = longestString(phrases);
+// console.log(longestPhrase);
+// //=> "longest phrase"
+// var words = ["and", "or", "the", "kettle", "coffee"];
+// var longestWord = longestString(words);
+// console.log(longestWord);
+// //=> "kettle" (first encountered longest word)
+
+//Release 1:
+//pseudocode for key-value match function:
+//	-Input is two js objects (object1 and object2)
+//	-Declare a variable to hold boolean return value to prevent function 
+//	short-circuting with an early return statement.
+//	-For each key in object1
+//		-IF object2 has the key
+//			-Compare the values at object1 key and object2 key
+//			-IF value of object1 key is equal to object2 key:
+//				-Set boolean variable equal to true
+//		-ELSE set boolean variable equal to false
+//	-Return boolean variable
