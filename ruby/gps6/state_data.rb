@@ -1,6 +1,11 @@
 #population density is number of people per square mile as of 2012
 #this data is updated every year with estimates from a 10 year census
 
+# class Something #to describe how constants work when defined in a class
+#   THING = {}
+# end
+
+# p Something::THING #needs the :: 
 
 STATE_DATA = {
   "Alabama" => {population_density: 94.65, population: 4822023},
