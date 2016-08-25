@@ -133,6 +133,30 @@ VirusPredictor.generate_report(STATE_DATA)
 
 #=======================================================================
 # Reflection Section
+#1. The state_data file uses both 'hash rocket' notation to declare values for string keys
+#(applies to all non-symbol data types that can be valid keys) and symbol notation to declare 
+#values for symbol keys.
+
+#2. require_relative is used when the file to be loaded is in the same or a closely related directory
+#as the file in which it's being loaded--in other words, the file is loaded relative to the requiring 
+#file's path.  require needs to specify an absolute path, or needs to be located in the $LOAD_PATH 
+#global variable object.
+
+#3. We can iterate over a hash by calling the #each method to iterate over key/value pairs.
+#We can also call the #each_key or #each_value methods to iterate over just values or keys.
+
+#4. The variables were instance variables, and therefore were automatically accessable 
+#by the instance methods passing them in as arguments (which was unnecessarry)...a question
+#of scope.
+
+#5. It was extremely helpful to work with my pair and guide to really dig into refactoring!
+#I now have a deeper understanding of when to use class methods.  I learned about a better 
+#approach to passing hashes as method parameters (especially initialize methods where a hash can
+#be used to get values for instance variables!).  I also solidified my concept for when/how
+#to use the private method to make methods private within a class definition...as well
+#as some cool tricks for how to save time by implicity testing private methods when testing
+#public methods, and declaring private reader/writer methods. 
+
 
 
 
