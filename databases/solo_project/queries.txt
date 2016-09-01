@@ -1,0 +1,2 @@
+Queries to the green_coffee database:
+1. Coffee origins: 
