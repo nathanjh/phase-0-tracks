@@ -1,2 +1,123 @@
-Queries to the green_coffee database:
+Queries to the green_coffee database: 
+    (quick note: the schema I drew differs slightly from the green_coffee.db in that I opted not to add the 'region' column to the origins table, as--of course--there can be many different regions for one country of origin!)
 1. Coffee origins: 
+    sqlite>SELECT * FROM origins;
+
+    1|Guatemala
+    2|Mexico
+    3|El Salvador
+    4|Honduras
+    5|Kenya
+    6|Ethiopia
+
+2. Let's change the date that we received one of our Kenyan coffees (erroneous data entry from the original BoL):
+    sqlite>SELECT * FROM coffee WHERE origin = 5; 
+
+    12|Kiyanyangi|5|3|5.25|876.0|false|2016-02-12
+    13|Gatuyaini|5|3|5.5|1300.0|false|2016-06-08
+
+    --the Gatuyaini was actually received on 6/22/16
+
+    sqlite>UPDATE coffee SET in_house = '2016-06-22';
+
+3. Let's take a look at coffees sorted by price; joining the coffee, origins, and importers tables (note that both importers and origins have a one-to-many relationship with coffee, i.e. one origin can produce many different coffees/one importer can procure many different coffees):
+    sqlite>SELECT 
+       ...>coffee.name AS 'Coffee',
+       ...>origins.name AS 'Origin',
+       ...>importers.name AS 'Importer',   
+       ...>coffee.price_per_lb AS 'Price (Green)'
+       ...>FROM coffee
+       ...>JOIN origins ON coffee.origin = origins.id
+       ...>JOIN importers ON coffee.importer = importers.id
+       ...>ORDER BY coffee.price_per_lb;
+
+    Hunapu|Guatemala|Volcafe|2.75
+    Aragon|Guatemala|Volcafe|3.5
+    Chaparal|Mexico|Atlas|3.5
+    El Diamante|Guatemala|Atlas|4.0
+    Chiapas|Mexico|Atlas|4.25
+    Malacara Red|El Salvador|Atlas|4.25
+    Las Flores|Honduras|Interamerican|4.5
+    Copo Mico|Honduras|Interamerican|4.5
+    Malacara Yellow|El Salvador|Atlas|4.75
+    Kiyanyangi|Kenya|Olam|5.25
+    El Portal|Honduras|Interamerican|5.5
+    Gatuyaini|Kenya|Olam|5.5
+    Sidama|Ethiopia|Royal|6.1
+    Chelba|Ethiopia|Atlas|6.25
+    Konga|Ethiopia|Royal|7.0
+
+4. Let's look at our coffee inventory by origin and importer (separate queries):
+    sqlite> SELECT
+       ...> origins.name AS 'Origin',
+       ...> SUM(coffee.lbs_on_hand)
+       ...> FROM coffee
+       ...> JOIN origins ON coffee.origin = origins.id
+       ...> GROUP BY origins.name
+       ...> ORDER BY SUM(coffee.lbs_on_hand) DESC;
+
+    Ethiopia|3357.0
+    Guatemala|2765.0
+    El Salvador|2437.0
+    Kenya|2176.0
+    Mexico|1875.0
+    Honduras|1850.0
+
+    sqlite> SELECT
+       ...> importers.name AS 'Importer',
+       ...> SUM(coffee.lbs_on_hand)
+       ...> FROM coffee
+       ...> JOIN importers ON coffee.importer = importers.id
+       ...> GROUP BY importers.name
+       ...> ORDER BY SUM(coffee.lbs_on_hand) DESC;
+
+    Atlas|6502.0
+    Olam|2176.0
+    Royal|2032.0
+    Volcafe|1900.0
+    Interamerican|1850.0
+
+5. Let's get rid of the 'past-crop' coffees...make way for the new crop...
+        sqlite> DELETE FROM coffee WHERE past_crop='true';
+        
+        --to check...
+        sqlite> SELECT DISTINCT past_crop FROM coffee;
+        
+        false
+
+Release 3.2
+1. Let's add some new coffees to our coffee table that we plan on purchasing but haven't yet chosen an importer:
+    
+    sqlite> INSERT INTO coffee (name, origin) 
+       ...> VALUES ('Kilenso', 6), ('Santa Sofia', 3), ('Meaza', 6), ('Kagumoini', 5);
+
+If we want to see a list of all our coffees (including the new ones) listed along with origin and importer, we'll need to use a left join between the coffee and importers tables (because the importer values for our new coffees are currently null):
+    
+    sqlite>SELECT 
+      ...>coffee.name AS 'Coffee',
+      ...>origins.name AS 'Origin',
+      ...>importers.name AS 'Importer'   
+      ...>FROM coffee
+      ...>JOIN origins ON coffee.origin = origins.id
+      ...>LEFT JOIN importers ON coffee.importer = importers.id
+      ...>ORDER BY importers.name;
+
+    Kilenso|Ethiopia|
+    Santa Sofia|El Salvador|
+    Meaza|Ethiopia|
+    Kagumoini|Kenya|
+    El Diamante|Guatemala|Atlas
+    Chaparal|Mexico|Atlas
+    Chelba|Ethiopia|Atlas
+    Malacara Red|El Salvador|Atlas
+    Las Flores|Honduras|Interamerican
+    Copo Mico|Honduras|Interamerican
+    Kiyanyangi|Kenya|Olam
+    Gatuyaini|Kenya|Olam
+    Sidama|Ethiopia|Royal
+    Konga|Ethiopia|Royal
+    Aragon|Guatemala|Volcafe
+    Hunapu|Guatemala|Volcafe
+
+
+
