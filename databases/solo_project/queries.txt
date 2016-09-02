@@ -18,7 +18,7 @@ Queries to the green_coffee database:
 
     --the Gatuyaini was actually received on 6/22/16
 
-    sqlite>UPDATE coffee SET in_house = '2016-06-22';
+    sqlite>UPDATE coffee SET in_house = '2016-06-22' WHERE id = 13;
 
 3. Let's take a look at coffees sorted by price; joining the coffee, origins, and importers tables (note that both importers and origins have a one-to-many relationship with coffee, i.e. one origin can produce many different coffees/one importer can procure many different coffees):
     sqlite>SELECT 
