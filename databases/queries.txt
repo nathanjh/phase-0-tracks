@@ -1,0 +1,30 @@
+Release 2.2
+
+    sqlite> SELECT * FROM reviews
+       ...> JOIN businesses ON reviews.business_id = businesses.id
+       ...> JOIN users ON reviews.user_id = users.id;
+   
+    1|2|super creepy place|1|1|1|Grundy Hollow Wedding Chapel|1|Bradford|Pitt
+    2|4|prompt service...really helped me out of a jam|2|3|2|Amir'sTowing|3|Angela | Jolie
+
+
+
+Release 2.3
+
+    sqlite> SELECT businesses.name, users.first_name, users.last_name, reviews.stars, reviews.comment
+       ...> FROM reviews
+       ...> JOIN businesses ON reviews.business_id = businesses.id
+       ...> JOIN users ON reviews.user_id=users.id;                           
+
+    Grundy Hollow Wedding Chapel|Bradford|Pitt|2|super creepy place
+    Amir's Towing|Angela|Jolie|4|prompt service...really helped me out of a jam
+
+Release 2.4
+
+    sqlite>SELECT businesses.name, users.first_name, users.last_name, reviews.stars
+       ...> FROM reviews                                               
+       ...> JOIN businesses ON reviews.business_id=businesses.id
+       ...> JOIN users ON reviews.user_id = users.id
+       ...> WHERE businesses.id=2;
+
+    Amir's Towing|Angela|Jolie|4
