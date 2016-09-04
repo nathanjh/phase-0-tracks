@@ -1,0 +1,14 @@
+8.4.3
+
+Example of a many-to-many (to-many) relationship:
+Simple sample-based musical instrument
+	
+	-The pitches table stores discreet pitch information, ie. pitch-names (e.g. C4, E6) and their corresponding frequencies in Hz
+	
+	-The samples table stores sample information; a name for reference
+	
+	-The filters table stores information pertaining to possible filters that can be applied to effect a given sample
+	
+	-The sample_at_pitch junction table stores instances of sample/pitch/filter combinations, in other words, resultant sound events
+
+I see this as a many-to-many relationship, as any number of samples may occur at any pitch with any filter.
