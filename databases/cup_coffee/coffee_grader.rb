@@ -47,8 +47,16 @@ end
 
 #CoffeeUtilities.create_user(db, "Chris")
 #db.execute("INSERT INTO users (name) VALUES ('Nathan')")
+# CoffeeUtilities.create_coffee(db, "Las Flores", "Honduras")
+# CoffeeUtilities.create_coffee(db, "Copo Mico", "Honduras")
+# test = db.execute("SELECT id FROM coffees WHERE name = 'Copo Mico'")[0]['id']
+# p test
+# puts test.class
+#CoffeeUtilities.new_sample(db, "Copo Mico", "2016-09-03")
+# test = CoffeeUtilities.get_id_from_name(db, 'coffees', 'Copo Mico')
+# p test
+scores = [9.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.5, 9.0, 9.0, 2.0, 88]
+CoffeeUtilities.score_sample(db, 1, 0, "2016-09-05", scores, "baggy but delicious")
 
-test = CoffeeUtilities.is_in?(db, 'users', 'name', 'Jonathan')
-p test
 
 
