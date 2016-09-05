@@ -1,5 +1,36 @@
 module CoffeeUtilities
 
+	#helper methods
+	module_function
+	
+	def create_user(db, name)	
+		db.execute("INSERT INTO users (name) VALUES (?)", [name])
+	end
+
+	def is_in?(db, table, col, test_value)
+		if test_value.class == String
+			test = db.execute("SELECT * FROM #{table} WHERE #{col} = '#{test_value}'")
+		else
+			test = db.execute("SELECT * FROM #{table} WHERE #{col} = #{test_value}")
+		end
+		
+		if test != []
+			true
+		else
+			false
+		end
+	end
+
+
+
+
+
+
+
+
+
+
+	#variables 
 	CREATE_COFFEES_TABLE = <<-SQL
 		CREATE TABLE IF NOT EXISTS coffees(
 			id INTEGER PRIMARY KEY,
@@ -47,7 +78,7 @@ module CoffeeUtilities
 			FOREIGN KEY(sample_id) REFERENCES samples(id)
 		)
 	SQL
-	
+
 
 
 end

@@ -45,5 +45,10 @@ tables.each do |table|
 	db.execute(table)
 end
 
+#CoffeeUtilities.create_user(db, "Chris")
+#db.execute("INSERT INTO users (name) VALUES ('Nathan')")
+
+test = CoffeeUtilities.is_in?(db, 'users', 'name', 'Jonathan')
+p test
 
 
