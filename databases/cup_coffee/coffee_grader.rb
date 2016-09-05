@@ -34,7 +34,16 @@
 	#reports methods
 
 require 'sqlite3'
+require_relative 'coffee_utilities'
 
 db = SQLite3::Database.new("coffee_grading.db")
 db.results_as_hash = true
+
+tables = [CoffeeUtilities::CREATE_COFFEES_TABLE, CoffeeUtilities::CREATE_USERS_TABLE, 
+	CoffeeUtilities::CREATE_SAMPLES_TABLE, CoffeeUtilities::CREATE_SCORES_TABLE]
+tables.each do |table|
+	db.execute(table)
+end
+
+
 
