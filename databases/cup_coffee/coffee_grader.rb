@@ -17,3 +17,24 @@
 #   a module to be required that will contain all helper methods
 #   a database with four tables (users, coffees, batches/samples, scores)
 
+#UI
+#require sqlite3, helper methods module
+#create or open database
+#create (if not already extant) tables
+#get user input
+#modify tables 
+#generate reports (optional)
+#quit
+
+#Helper methods module
+	#user creation method
+	#coffee creation method
+	#sample input method
+	#score input method
+	#reports methods
+
+require 'sqlite3'
+
+db = SQLite3::Database.new("coffee_grading.db")
+db.results_as_hash = true
+
