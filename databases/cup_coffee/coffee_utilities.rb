@@ -37,7 +37,7 @@ module CoffeeUtilities
 	end
 
 	#logical test method for user data entry
-	def is_in?(db, table, col, test_value)
+	def in_db?(db, table, col, test_value)
 		if test_value.class == String
 			test = db.execute("SELECT * FROM #{table} WHERE #{col} = '#{test_value}'")
 		else
@@ -51,6 +51,7 @@ module CoffeeUtilities
 		end
 	end
 
+	#reports
 
 
 
@@ -90,6 +91,7 @@ module CoffeeUtilities
 			id INTEGER PRIMARY KEY,
 			user_id INT,
 			sample_id INT,
+			coffee_id INT,
 			sample_date TEXT,
 			fragrance_aroma REAL,
 			flavor REAL,
@@ -106,6 +108,7 @@ module CoffeeUtilities
 			notes VARCHAR(255),
 			FOREIGN KEY(user_id) REFERENCES users(id)
 			FOREIGN KEY(sample_id) REFERENCES samples(id)
+			FOREIGN KEY(coffee_id) REFERENCES coffees(id)
 		)
 	SQL
 
