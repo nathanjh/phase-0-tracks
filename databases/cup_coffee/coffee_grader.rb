@@ -119,19 +119,21 @@ while running
 					try_again = CoffeeUi.answer_check('y', 'n', ' to try again', ' for main menu')
 					if try_again == 'n'
 						adding_sample = false
-						break #TODO fix this so that we exit to main menu!
+						break 
 					else
 						puts "Please enter coffee name:"
 						coffee_name = gets.chomp
 					end
 				end
-			end 
-			CoffeeUtilities.new_sample(db, CoffeeUtilities.get_id_from_name(db, 'coffees', coffee_name), roast_date)
-			puts "Added new sample of #{coffee_name}, roasted on #{roast_date}.\n"
-			puts "Again?"
-			sample_again = CoffeeUi.answer_check('y', 'n', ' to add another sample', ' for main menu')
-			if sample_again == 'n'
-				adding_sample = false
+			end
+			if CoffeeUtilities.in_db?(db, 'coffees', 'name', coffee_name) # to handle break case from try_again = 'n' on line 120
+				CoffeeUtilities.new_sample(db, CoffeeUtilities.get_id_from_name(db, 'coffees', coffee_name), roast_date)
+				puts "Added new sample of #{coffee_name}, roasted on #{roast_date}.\n"
+				puts "Add another sample to cup?"
+				sample_again = CoffeeUi.answer_check('y', 'n', ' to add another sample', ' for main menu')
+				if sample_again == 'n'
+					adding_sample = false
+				end
 			end
 		end
 	when 3
