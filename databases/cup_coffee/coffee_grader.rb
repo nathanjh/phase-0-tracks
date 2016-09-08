@@ -137,6 +137,40 @@ while running
 			end
 		end
 	when 3
+		#start loop
+		#get user input for coffee name, origin
+		#reject if name already exists
+		#push name/origin input pairs to a hash (so user can add as many coffees as they want)
+		#get user input to add another coffee or done to exit loop
+		#iterate over hash to add coffees to coffees table
+		#print a summary of coffess added, and provide the option to add more or exit to main menu
+		puts "Let's add some new coffee(s)! As many as you'd like..."
+		adding_coffee = true
+		new_coffees = {}
+		while adding_coffee
+			puts "New coffee name: "
+			coffee_name = gets.chomp
+			if !CoffeeUtilities.in_db?(db, 'coffees', 'name', coffee_name)
+				puts "New coffee origin: "
+				coffee_origin = gets.chomp
+				new_coffees[coffee_name] = coffee_origin
+				puts "Added #{coffee_origin}, #{coffee_name}.", "Add another coffee?"
+			else 
+				puts "Huh. Looks like that coffee already exists in our records.", "Try again?"
+			end
+			add_another = CoffeeUi.answer_check('y', 'n', ' to add another coffee', ' to finish')
+			if add_another == 'n'
+				adding_coffee = false
+			end
+		end
+		if new_coffees != {}
+			puts "COFFEES ADDED".center(50, '=')
+			new_coffees.each do |coffee, origin| 
+				CoffeeUtilities.create_coffee(db, coffee, origin) 
+				puts "#{coffee}, #{origin}".center(50, '*')
+			end
+			puts "=" * 50
+		end
 	when 4
 	else
 		puts "Thanks for using...goodbye!" 
