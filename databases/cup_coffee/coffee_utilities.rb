@@ -13,27 +13,27 @@ module CoffeeUtilities
 		db.execute("INSERT INTO coffees (name, origin) VALUES (?, ?)", [coffee, origin])
 	end
 
-	#to add a sample/batch
+	#to add a sample/batch                             
 	def new_sample(db, coffee_id, roast_date)
 		db.execute("INSERT INTO samples (coffee_id, roast_date) VALUES (?, ?)", [coffee_id, roast_date])
 	end
 
 	#to add a new sensory score (always blind tasting, so coffee not known)
 	#scores is an array of floats/reals input by the user
-	def score_sample(db, user_id, sample_id, date, scores, notes)
+	def score_sample(db, user_id, sample_id, sample_date, scores, notes, score_date)
 		db.execute("INSERT INTO scores 
 			(user_id, sample_id, sample_date, fragrance_aroma, flavor, 
 			aftertaste, acidity, body, uniformity, balance, clean_cup, 
-			sweetness, overall, defects, total_score, notes) 
-			VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", 
+			sweetness, overall, defects, total_score, notes, score_date) 
+			VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", 
 			[user_id, sample_id, date, scores[0], scores[1], scores[2], 
 			scores[3], scores[4], scores[5], scores[6], scores[7], scores[8], 
-			scores[9], scores[10], scores[11], notes])
+			scores[9], scores[10], scores[11], notes, score_date])
 	end
 
-	#to get id from name--when given db and a table
-	def get_id_from_name(db, table, name)
-		id = db.execute("SELECT id FROM #{table} WHERE name = '#{name}'")[0]['id']
+	#to get value from a corresponding row value--when given lookup_column, db, table, column
+	def get_from_value(db, lookup_col, table, col, value)
+		return_value = db.execute("SELECT #{lookup_col} FROM #{table} WHERE #{col} = '#{value}'")[0][lookup_col]
 	end
 
 	#logical test method for user data entry
@@ -50,6 +50,16 @@ module CoffeeUtilities
 			false
 		end
 	end
+
+	def has_entries?(db, table)
+		test = db.execute("SELECT id, COUNT(id) FROM #{table}")[0]['COUNT(id)']
+		if test == 0
+			false
+		else
+			true
+		end
+	end
+
 
 	#reports
 
@@ -106,6 +116,7 @@ module CoffeeUtilities
 			defects REAL,
 			total_score REAL,
 			notes VARCHAR(255),
+			score_date TEXT,
 			FOREIGN KEY(user_id) REFERENCES users(id)
 			FOREIGN KEY(sample_id) REFERENCES samples(id)
 			FOREIGN KEY(coffee_id) REFERENCES coffees(id)

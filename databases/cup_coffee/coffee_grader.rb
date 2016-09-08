@@ -34,6 +34,7 @@
 	#reports methods
 
 require 'sqlite3'
+require 'date'
 require_relative 'coffee_utilities'
 require_relative 'coffee_ui'
 
@@ -95,6 +96,54 @@ while running
 	#case statement to handle user input (use to_i method return to test input validity)
 	case user_choice
 	when 1
+		#allows user to provide ratings for as many samples as they'd like
+		#create outer array
+		#start loop
+		#reset inner array
+		#gets user input for coffee score, stored as a nested data structure (multi-dimensional array w/in array)
+		#get user input to score another coffee or done to exit loop
+		#iterate over outer /inner arrays to add scores to scores table rows
+		#print summary of scores, displaying coffee names, user names, total scores...exit to main menu
+		user_id = CoffeeUtilities.get_from_value(db, 'id', 'users', 'name', user)
+		new_scores = []
+		scoring = true
+		while scoring 
+			if !CoffeeUtilities.has_entries?(db, 'samples')
+				puts "I don't see any samples to score!\nPlease add some samples first.\n\n"
+				break
+			end
+			score = []
+			puts "Let's score some coffee!", "Please enter sample # :"
+			sample_number = gets.chomp.to_i
+			while sample_number == "" || sample_number == 0 || !CoffeeUtilities.in_db?(db, 'samples', 'id', sample_number) 
+				puts "No record of sample ##{sample_number}.", "Please enter a valid sample number..."
+				sample_number = gets.chomp.to_i	
+			end
+			score_date = Date.today.strftime('%F')
+			coffee_id = CoffeeUtilities.get_from_value(db, 'coffee_id', 'samples', 'id', sample_number)
+			sample_date = CoffeeUtilities.get_from_value(db, 'roast_date', 'samples', 'id', sample_number)
+			sensory = []
+			puts "Please enter scores for sample ##{sample_number}(in quarter-point format, eg. 9.25)."
+			CoffeeUi::SENSORY_CATEGORIES.each do |category|
+				puts "#{category}:"
+				sensory << CoffeeUi.sensory_score_check
+			end
+			defects = CoffeeUi.defect_calculator  
+			total_score = sensory.reduce(:+) - defects
+			sensory << defects << total_score
+			puts "Please take a moment to add any tasting notes (make sure to note any defects):"
+			notes = gets.chomp
+			score << user_id << sample_number << coffee_id << sample_date << sensory << notes << score_date
+			new_scores << score 
+			puts "Recorded a score of #{total_score} for sample ##{sample_number}", "Input another score?"
+			another_score = CoffeeUi.answer_check('y', 'n', ' to score another sample', ' to finish.')
+			if another_score == 'n'
+				scoring = false
+				break
+			end
+		end
+
+		# add loops to create db entries
 	when 2
 		adding_sample = true
 		while adding_sample
@@ -127,8 +176,9 @@ while running
 				end
 			end
 			if CoffeeUtilities.in_db?(db, 'coffees', 'name', coffee_name) # to handle break case from try_again = 'n' on line 120
-				CoffeeUtilities.new_sample(db, CoffeeUtilities.get_id_from_name(db, 'coffees', coffee_name), roast_date)
-				puts "Added new sample of #{coffee_name}, roasted on #{roast_date}.\n"
+				CoffeeUtilities.new_sample(db, CoffeeUtilities.get_from_value(db, 'id', 'coffees', 'name', coffee_name), roast_date)
+				sample_number = CoffeeUtilities.get_from_value(db, 'id', 'samples', 'roast_date', roast_date)
+				puts "Added new sample of #{coffee_name}, roasted on #{roast_date}, as sample # #{sample_number}\n(please use for blind sample # on cupping table).\n"
 				puts "Add another sample to cup?"
 				sample_again = CoffeeUi.answer_check('y', 'n', ' to add another sample', ' for main menu')
 				if sample_again == 'n'
@@ -143,7 +193,7 @@ while running
 		#push name/origin input pairs to a hash (so user can add as many coffees as they want)
 		#get user input to add another coffee or done to exit loop
 		#iterate over hash to add coffees to coffees table
-		#print a summary of coffess added, and provide the option to add more or exit to main menu
+		#print a summary of coffess added, exit to main menu
 		puts "Let's add some new coffee(s)! As many as you'd like..."
 		adding_coffee = true
 		new_coffees = {}
@@ -177,6 +227,8 @@ while running
 		running = false
 	end
 end
+
+
 
 
 
