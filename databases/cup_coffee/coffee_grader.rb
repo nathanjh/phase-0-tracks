@@ -142,8 +142,13 @@ while running
 				break
 			end
 		end
-
-		# add loops to create db entries
+		puts "#{user}'s Scores #{Date.today.strftime('%a, %m/%y')}".center(50, '@')
+		new_scores.each do |sample|
+			CoffeeUtilities.score_sample(db, *sample)
+			puts "Sample ##{sample[1]}".ljust(30, '>') << "#{sample[4][11]}"
+		end
+		puts "@" * 50, "\n\n\n"
+		
 	when 2
 		adding_sample = true
 		while adding_sample
@@ -177,7 +182,7 @@ while running
 			end
 			if CoffeeUtilities.in_db?(db, 'coffees', 'name', coffee_name) # to handle break case from try_again = 'n' on line 120
 				CoffeeUtilities.new_sample(db, CoffeeUtilities.get_from_value(db, 'id', 'coffees', 'name', coffee_name), roast_date)
-				sample_number = CoffeeUtilities.get_from_value(db, 'id', 'samples', 'roast_date', roast_date)
+				sample_number = CoffeeUtilities.last_entry(db, 'samples', 'id')
 				puts "Added new sample of #{coffee_name}, roasted on #{roast_date}, as sample # #{sample_number}\n(please use for blind sample # on cupping table).\n"
 				puts "Add another sample to cup?"
 				sample_again = CoffeeUi.answer_check('y', 'n', ' to add another sample', ' for main menu')

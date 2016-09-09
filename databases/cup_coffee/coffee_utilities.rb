@@ -20,13 +20,13 @@ module CoffeeUtilities
 
 	#to add a new sensory score (always blind tasting, so coffee not known)
 	#scores is an array of floats/reals input by the user
-	def score_sample(db, user_id, sample_id, sample_date, scores, notes, score_date)
+	def score_sample(db, user_id, sample_id, coffee_id, sample_date, scores, notes, score_date)
 		db.execute("INSERT INTO scores 
-			(user_id, sample_id, sample_date, fragrance_aroma, flavor, 
+			(user_id, sample_id, coffee_id, sample_date, fragrance_aroma, flavor, 
 			aftertaste, acidity, body, uniformity, balance, clean_cup, 
 			sweetness, overall, defects, total_score, notes, score_date) 
-			VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", 
-			[user_id, sample_id, date, scores[0], scores[1], scores[2], 
+			VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", 
+			[user_id, sample_id, coffee_id, sample_date, scores[0], scores[1], scores[2], 
 			scores[3], scores[4], scores[5], scores[6], scores[7], scores[8], 
 			scores[9], scores[10], scores[11], notes, score_date])
 	end
@@ -59,6 +59,12 @@ module CoffeeUtilities
 			true
 		end
 	end
+
+	#to return index of most recent entry 
+	def last_entry(db, table, col)
+		last_entry = db.execute("SELECT MAX(#{col}) FROM #{table}")[0]["MAX(#{col})"]
+	end
+
 
 
 	#reports
